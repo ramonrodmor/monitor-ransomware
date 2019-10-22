@@ -7,29 +7,15 @@
 #include "notificacao.h"
 #include "idmonitores.h"
 #include "controlenotificacao.h"
+#include <pdh.h>
+#include <pdhmsg.h>
 
 using namespace std;
-
-struct antigo_disco {
-    long long read;
-    long long write;
-};
-
-struct novo_disco {
-    long long read;
-    long long write;
-};
-
-struct disco {
-    antigo_disco antigo;
-    novo_disco novo;
-};
 
 class MonitorDisco
 {
 private:
-    static disco consulta_disco();
-    static disco atualiza_disco(disco);
+    static double getDiskTime();
 public:
     static void iniciar_monitor(ControleNotificacao*);
 };

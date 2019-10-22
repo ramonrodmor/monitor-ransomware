@@ -27,7 +27,7 @@ void ControleNotificacao::notificar(Notificacao obj) {
     }
 }
 
-void ControleNotificacao::notificar(long long leitura, long long escrita) {
+void ControleNotificacao::notificar(long leitura, long escrita) {
     atualiza_grafico(leitura, escrita);
 }
 
@@ -42,7 +42,7 @@ void ControleNotificacao::set_contador_honeypot(Notificacao obj) {
 }
 
 // função que atualiza o gráfico do monitor de disco
-void ControleNotificacao::atualiza_grafico(long long leitura, long long escrita) {
+void ControleNotificacao::atualiza_grafico(long leitura, long escrita) {
 
     contador_disco++;
 
@@ -54,7 +54,7 @@ void ControleNotificacao::atualiza_grafico(long long leitura, long long escrita)
     //graficoDisco->graph(1)->setData(tempo, valor2);
 
     graficoDisco->xAxis->setRange(contador_disco-60, contador_disco);
-    graficoDisco->yAxis->setRange(0, 1000000000);
+    graficoDisco->yAxis->setRange(0, 100);
     graficoDisco->replot(QCustomPlot::rpQueuedReplot);
 }
 
