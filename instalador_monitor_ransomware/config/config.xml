@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Installer>
+    <Name>Instalador Monitor Ransomware</Name>
+    <Version>1.0.0</Version>
+    <Title>Instalador do Monitor Ransomware</Title>
+    <Publisher>Ramon Moreira</Publisher>
+    <!-- Directory name is used in component.xml -->
+    <StartMenuDir>Monitor Ransomware</StartMenuDir>
+    <TargetDir>C:/Monitor Ransomware/</TargetDir>
+</Installer>

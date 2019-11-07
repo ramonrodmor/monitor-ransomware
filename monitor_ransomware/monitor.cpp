@@ -61,25 +61,16 @@ void Monitor::desenha_grafico()
     pen.setStyle(Qt::DashLine);
     pen.setWidthF(2.5);
 
-    // Gráfico de escrita
-    pen.setColor(QColor(255, 0, 0, 200));
+    // Gráfico de uso
+    pen.setColor(QColor(0, 0, 255, 200));
     ui->customPlot->addGraph();
     ui->customPlot->graph(0)->setLineStyle(QCPGraph::lsLine);
     ui->customPlot->graph(0)->setPen(pen);
-    ui->customPlot->graph(0)->setBrush(QBrush(QColor(255, 0, 0,70)));
-    ui->customPlot->graph(0)->setName("Número de operações de escrita");
-
-    // Gráfico de leitura
-    pen.setColor(QColor(0, 0, 255, 200));
-    ui->customPlot->addGraph();
-    ui->customPlot->graph(1)->setLineStyle(QCPGraph::lsLine);
-    ui->customPlot->graph(1)->setPen(pen);
-    ui->customPlot->graph(1)->setBrush(QBrush(QColor(0, 0, 255,70)));
-    ui->customPlot->graph(1)->setName("Número de operações de leitura");
+    ui->customPlot->graph(0)->setBrush(QBrush(QColor(0, 0, 255,70)));
+    ui->customPlot->graph(0)->setName("Tempo de atividade (%): ");
 
     // axis configurations:
     ui->customPlot->xAxis->setLabel("Tempo de monitoramento (s)");
-    ui->customPlot->yAxis->setLabel("Número de operações de leitura/escrita");
     ui->customPlot->xAxis2->setVisible(true);
     ui->customPlot->yAxis2->setVisible(true);
     ui->customPlot->xAxis2->setTickLabels(false);
@@ -89,7 +80,7 @@ void Monitor::desenha_grafico()
     ui->customPlot->xAxis2->setSubTicks(false);
     ui->customPlot->yAxis2->setSubTicks(false);
     // setup legend:
-    ui->customPlot->legend->setFont(QFont(font().family(), 7));
+    ui->customPlot->legend->setFont(QFont(font().family(), 10));
     ui->customPlot->legend->setVisible(true);
     ui->customPlot->axisRect()->insetLayout()->setInsetAlignment(0, Qt::AlignLeft | Qt::AlignTop);
 }

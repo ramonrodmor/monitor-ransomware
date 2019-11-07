@@ -25,9 +25,9 @@ public:
     ControleNotificacao(QListWidget*, QListWidget*, QCustomPlot*);
     ~ControleNotificacao();
     void notificar(Notificacao); // método chamado pelos monitores para gerar a notificação
-    void notificar(long, long); // método chamado pelos monitores para gerar a notificação
+    void notificar(double); // método chamado pelos monitores para gerar a notificação
     void set_contador_honeypot(Notificacao); // incremento do contador de honeypot
-    void atualiza_grafico(long, long); // incremento do contator de disco
+    void atualiza_grafico(double); // incremento do contator de disco
     void set_contador_entropia(Notificacao); // incremento do contator de entropia
     void set_exibir_notificacao(bool); // alteração do parâmetro de impressão
 };

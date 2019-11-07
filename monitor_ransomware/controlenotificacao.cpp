@@ -1,6 +1,6 @@
 #include "controlenotificacao.h"
 
-QVector<double> tempo, valor1, valor2;
+static QVector<double> tempo, valor1, valor2;
 
 ControleNotificacao::ControleNotificacao(QListWidget * listH, QListWidget * listE, QCustomPlot * grafico) {
     contador_disco = 0;
@@ -27,8 +27,8 @@ void ControleNotificacao::notificar(Notificacao obj) {
     }
 }
 
-void ControleNotificacao::notificar(long leitura, long escrita) {
-    atualiza_grafico(leitura, escrita);
+void ControleNotificacao::notificar(double tempoDisco) {
+    atualiza_grafico(tempoDisco);
 }
 
 // função que implementa contador e imprime a notificação do monitor honeypot
@@ -42,16 +42,18 @@ void ControleNotificacao::set_contador_honeypot(Notificacao obj) {
 }
 
 // função que atualiza o gráfico do monitor de disco
-void ControleNotificacao::atualiza_grafico(long leitura, long escrita) {
+void ControleNotificacao::atualiza_grafico(double tempoDisco) {
 
     contador_disco++;
 
     // set data:
     tempo  << contador_disco;
-    valor1 << escrita;
-    valor2 << leitura;
+    valor1 << int(tempoDisco);
     graficoDisco->graph(0)->setData(tempo, valor1);
-    //graficoDisco->graph(1)->setData(tempo, valor2);
+    stringstream ss;
+    ss << "Tempo de atividade (%): " << int(tempoDisco);
+    string texto = ss.str();
+    graficoDisco->graph(0)->setName(texto.c_str());
 
     graficoDisco->xAxis->setRange(contador_disco-60, contador_disco);
     graficoDisco->yAxis->setRange(0, 100);
